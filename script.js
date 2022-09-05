@@ -1,4 +1,6 @@
 const display = document.getElementById("display");
+let operation = "";
+let value = 0;
 
 const ac = document.getElementById("ac").addEventListener("click", function(){
     display.innerText = "";
@@ -45,37 +47,40 @@ const nine = document.getElementById("nine").addEventListener("click", function(
 })
 
 const plus = document.getElementById("plus").addEventListener("click", function(){
-    display.innerText = display.innerText + "+";
+    value = parseInt(display.innerText);
+    display.innerText = "";
+    operation = "+"
 })
 
 const minus = document.getElementById("minus").addEventListener("click", function(){
-    display.innerText = display.innerText + "-";
+    value = parseInt(display.innerText);
+    display.innerText = "";
+    operation = "-"
 })
 
 const divide = document.getElementById("divide").addEventListener("click", function(){
-    display.innerText = display.innerText + "/";
+    value = parseInt(display.innerText);
+    display.innerText = "";
+    operation = "/"
 })
 
 const multi = document.getElementById("multi").addEventListener("click", function(){
-    display.innerText = display.innerText + "*";
+    value = parseInt(display.innerText);
+    display.innerText = "";
+    operation = "*"
 })
 
 const equel = document.getElementById("equel").addEventListener("click", function(){
-    const calculationString = display.innerText;
-    let sum = "";
-    let v = 0;
-    for(let i = 0; i < calculationString.length; i++){
-        console.log(v);
-        if(calculationString[i] === "+"){
-             v = v + parseInt(sum);
-             sum = "";
-             console.log(v);
-         }
-         else{
-             sum = sum + calculationString[i];
-         }
-         console.log(v);
+    if(operation === "+"){
+        display.innerText = value + parseInt(display.innerText);
     }
-    v = v + parseInt(sum);
-    display.innerText = v;
+    else if(operation === "-"){
+        display.innerText = value - parseInt(display.innerText);
+    }
+    else if(operation === "/"){
+        display.innerText = value / parseInt(display.innerText);
+    }
+    else if(operation === "*"){
+        display.innerText = value * parseInt(display.innerText);
+    }
 })
